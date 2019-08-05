@@ -1,8 +1,6 @@
 Monty Hall Monte Carlo
 ================
 
-# Monty Hall and Monte Carlo
-
 Whether you recognize its name or not, you’ve probably heard of the
 Monty Hall problem. It’s a probability puzzle, loosely based on the
 American television game show “Let’s Make a Deal” and named after its
@@ -25,21 +23,21 @@ first = sample(doors, size = N, replace=TRUE) # Suppose your pick is purely rand
 first
 ```
 
-    ##  [1] 1 2 3 3 1 2 2 1 1 2
+    ##  [1] 1 1 2 2 1 3 1 3 1 3
 
 ``` r
 host = 1+2+3 - prize - first # If you pick the wrong door, the host will open the only remaining door.
 host # Of course, sometimes you pick the right door.
 ```
 
-    ##  [1] 4 3 2 2 4 3 3 4 4 3
+    ##  [1] 4 4 3 3 4 2 4 2 4 2
 
 ``` r
 N.right = sum(first == prize) # This is the number of times you pick the right door at first.
 N.right
 ```
 
-    ## [1] 4
+    ## [1] 5
 
 ``` r
 remain.doors = setdiff(c(1,2,3),prize) # This is a set of doors without the prize.
@@ -55,16 +53,16 @@ cbind(prize,first,host) # See what door the host opens.
 ```
 
     ##       prize first host
-    ##  [1,]     1     1    3
-    ##  [2,]     1     2    3
-    ##  [3,]     1     3    2
-    ##  [4,]     1     3    2
+    ##  [1,]     1     1    2
+    ##  [2,]     1     1    2
+    ##  [3,]     1     2    3
+    ##  [4,]     1     2    3
     ##  [5,]     1     1    3
-    ##  [6,]     1     2    3
-    ##  [7,]     1     2    3
-    ##  [8,]     1     1    3
+    ##  [6,]     1     3    2
+    ##  [7,]     1     1    2
+    ##  [8,]     1     3    2
     ##  [9,]     1     1    2
-    ## [10,]     1     2    3
+    ## [10,]     1     3    2
 
 ``` r
 second = 1+2+3-first-host # If you switch, you pick the only remaining door.
@@ -72,28 +70,28 @@ cbind(prize,first,host,second) # This is the results of 10 games.
 ```
 
     ##       prize first host second
-    ##  [1,]     1     1    3      2
-    ##  [2,]     1     2    3      1
-    ##  [3,]     1     3    2      1
-    ##  [4,]     1     3    2      1
+    ##  [1,]     1     1    2      3
+    ##  [2,]     1     1    2      3
+    ##  [3,]     1     2    3      1
+    ##  [4,]     1     2    3      1
     ##  [5,]     1     1    3      2
-    ##  [6,]     1     2    3      1
-    ##  [7,]     1     2    3      1
-    ##  [8,]     1     1    3      2
+    ##  [6,]     1     3    2      1
+    ##  [7,]     1     1    2      3
+    ##  [8,]     1     3    2      1
     ##  [9,]     1     1    2      3
-    ## [10,]     1     2    3      1
+    ## [10,]     1     3    2      1
 
 ``` r
 mean(prize==first)
 ```
 
-    ## [1] 0.4
+    ## [1] 0.5
 
 ``` r
 mean(prize==second)
 ```
 
-    ## [1] 0.6
+    ## [1] 0.5
 
 Now let’s repeat this game 1 million times instead of just 10.
 
@@ -110,13 +108,13 @@ second = 1+2+3-first-host
 mean(prize==first)
 ```
 
-    ## [1] 0.333799
+    ## [1] 0.333942
 
 ``` r
 mean(prize==second)
 ```
 
-    ## [1] 0.666201
+    ## [1] 0.666058
 
 Even if you change where the prize is (that is, prize = 2 or 3), the
 answer is the same. In fact, it shouldn’t matter because we could just
