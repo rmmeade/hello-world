@@ -1,5 +1,5 @@
 ---
-title: "hello-world"
+title: "Monty Hall Monte Carlo"
 author: "Rachel Meade"
 date: "8/4/2019"
 output: html_document
