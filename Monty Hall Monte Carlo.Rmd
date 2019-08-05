@@ -1,13 +1,12 @@
 ---
 title: "Monty Hall Monte Carlo"
-author: "Rachel Meade"
-date: "8/4/2019"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 # Monty Hall and Monte Carlo
 Whether you recognize its name or not, you've probably heard of the Monty Hall problem. It's a probability puzzle, loosely based on the American television game show "Let's Make a Deal" and named after its original host, Monty Hall.
 
